@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="../js/jquery-3.2.1.js"></script>
+
+        <style>
+             img{
+<!--              position: fixed;-->
+<!--              top: 0;-->
+<!--              bottom: 0;-->
+<!--              left: 0;-->
+<!--              right: 0;-->
+              width: 100%;
+              height: auto;
+<!--              z-index: 999;-->
+            }
+    </style>
+</head>
+<body>
+<img id="screenshot" src="../image/temp_screenshot.jpg" />
+<!--<p>Hello world!</p>-->
+  <script type="text/javascript">
+             $(window).keydown(function(e){
+                 console.log("keydown")
+                 console.log(e)
+            });
+            $(window).keyup(function(e){
+                console.log("keyup")
+                console.log(e)
+            });
+             var scrollFunc = function (e) {
+                e = e || window.event;
+                console.log("滚动")
+                console.log(e)
+<!--                var t1 = document.getElementById("wheelDelta");-->
+<!--                var t2 = document.getElementById("detail");-->
+<!--                if (e.wheelDelta) {//IE/Opera/Chrome-->
+<!--                    t1.value = "IE、Opera、Safari、Chrome";-->
+<!--                    t2.value = e.wheelDelta;-->
+<!--                } else if (e.detail) {//Firefox-->
+<!--                    t1.value = "Firefox";-->
+<!--                    t2.value = e.detail;-->
+<!--                }-->
+                //ScrollText(direct);
+            }
+            var myimage=document.getElementById("screenshot");
+            window.onmousewheel = document.onmousewheel = scrollFunc;
+            var param=window.location.search;
+            if(param){
+               if (param.indexOf('?') != -1) {
+                    var str = param.substr(1)　 //去掉?号
+<!--                    var a=str.split('=')[0]-->
+<!--                    alert(a);-->
+<!--                    var b=str.split('=')[1]-->
+<!--                    alert(Number(b));-->
+                    strs = str.split('&');
+                    console.log(strs)
+                    for (var i = 0; i < strs.length; i++) {
+                        if(strs[i].split('=')[0] == 'xOffset'){
+                           alert(strs[i].split('=')[1])
+                        }else if(strs[i].split('=')[0] == 'yOffset'){
+                           alert(strs[i].split('=')[1])
+                        }
+                    }
+                }
+            }
+            var host=window.location.host;
+            var strs=host.split(':');
+            alert(strs[0]);
+            alert(strs[1]);
+  </script>
+</body>
+</html>
